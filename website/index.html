@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style1.css">
+    <title>Lab 8 Web Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" 
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+    </script>
+	<script>
+    var username = prompt("Enter your Username: ", "");
+    if (confirm("Thank you for Logging into my Home Page, " + username)) {
+       document.write("<h1> Welcome " + username + "!</h1>");
+    } else {
+       document.write("<h1>Hello, world!</h1>");
+    }
+  </script>
+    <script>
+        $(function(){
+            $('#linkbutton').on('click', clickMe);
+            
+            function clickMe(event){
+                event.preventDefault();
+                $('#p2').html('<p>I have a variety of interests from reading books whether it be an historical account of the Byzantine Empire or a fantasy novel like Lord of the Rings. I like my father am a avid enjoyer of history whether it be ancient of modern but I personally am a fan of Rome and it many successors states. And more recently I have come to enjoy watching live streams on Twitch. But my favorite thing to do above all else is playing videogames not matter the platform they are found on. I love many genres of games from grand strategy games like Total War, RPGs like Dragon Age, MMOs like Guild Wars 2, JRPGs like Final Fantasy 7, and simulation games like Civilization.</p>');
 
+            };
+        });
+        </script>
+</head>
+<body>
+    <section>
+        <header>
+            <h1>Maximus Williams</h1>
+        </header>
+        <p>
+			<h2>Hometown: Beavercreek</h2>
+			<h2>State: Ohio</h2>
+			<h2>Country: United States of America</h2>
+			<h2>Major:Information Technology & Cybersecurity, BSITC</h2>
+        </p>
+            <main>
+			<br>
+			</br>
+                <strong>
+                    <article>
+                            <header><h2>Where I see myself in 10 years</h2></header>
+
+                </article>
+            </strong>
+                    <p>
+						By the year 2033, I hope to be graduated with my bachelor degree from Wright State University and have begun my career in Cyber Security Analyst at either <a href=" https://www.radiancetech.com/ " target="_blank"> Radiance Technologies </a> or <a href="https://www.nasic.af.mil/ " target="_blank"> NASIC </a> (National Air and Space Intelligence Center). While I may already have the necessary knowledge for my job, by the time 2033 rolls around, I see myself going on to earn my Master degree in a beneficial topic to my job so as to elevate myself at whichever company I end up working at. Beavercreek has been my home my entire life from daycare to college so I see myself still living within the city or township of Beavercreek. Even though 10 years is a long-ways away I still don’t see myself in any kind of a deep relationship with anyone, as although I could have my life put together, at the time of writing this I still do not think it will have been enough for me to start a relationship with anyone. As I am such an avid fan of technology, I can only see my love of it deepening as time goes on, with me increasing my knowledge base on the different coding languages I have thus far just begun to better understand. In summary in 10 years or 2033, I see myself with a job in the Cyber Security field, perusing ever higher education, still living in Beavercreek where I grew up, not in a deep relationship with someone else, and lastly deepening my knowledge of all the coding languages I have learned up to now.
+                    </p> 
+					<h3>My Summer Goal</h3>
+					<p>
+						My goal for this summer in a simple one, have a normal lazy summer. So even though this summer I officially start in an 8-4 job I just want to be able to have time to myself to do long stints of gaming, or binging a show. I don’t want any curve balls popping up like last summer where I knew I was going be phased out of the night time janitor duties come the next year or having my savings drained from needing a car and paying for summer classes. I summary I want a summer where I don’t have to worry financial stuff like my upcoming car lease or what my tuition for my summer courses is, I just want to have a normal weekend this summer where I don’t have to worry about what assignments I have due or upcoming tests and exams. Just an average summer with as little outside stressors as possible.
+					</p>
+					<h3>My Hobbies Outside of School</h3>
+                    <p id="p2">
+                       
+                    </p>
+					
+                    <a href="" id="linkbutton">Click Me</a>
+					<h4>My top 8 videogames
+				<ul>
+                <br>Legend of Zelda Twilight Princess</br>
+				<br>Dragon Age Orgins</br>
+				<br>Crusader Kings 3</br>
+				<br>Total War Rome 2</br>
+				<br>Legend of Zelda Breath of the Wild</br>
+				<br>Pokemon Platinum</br>
+				<br>Atelier Ryza 2: Lost Legends & the Secret Fairy</br>
+				<br>Final Fantasy VII Remake</br>
+				</ul>
+				<p>
+				<br></br>
+            </main>
+            <footer>
+            </footer>
+    </section>
+</body>
+</html>
