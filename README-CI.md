@@ -1,44 +1,22 @@
-**Part 1**
+**-Part 1-**
 
-Documentation
-Create README-CI.md in main folder of your repo that details the following:
+**CI Project Overview**
 
-CI Project Overview
 (what are you doing, why, what tools)
 
-Run Project Locally
+**How to Run Project Locally**
 
-how to install docker + dependencies (WSL2, for example)
+_How to install Docker on WSL2_
 
-how to build an image from the Dockerfile
 
-how to run the container
+_How to build an image from the Dockerfile_
 
-how to view the project running in the container (open a browser...go to IP and port...)
 
-**Part 2**
 
-Documentation
-Add to README-CI.md to include:
+_How to run the container_
 
-Process to create public repo in DockerHub
 
-How to authenticate with DockerHub via CLI using Dockerhub credentials
 
-what credentials would you recommend providing?
-How to push container image to Dockerhub (without GitHub Actions)
+_How to view the project running in the container_
 
-Configuring GitHub Secrets
 
-How to set a secret
-What secret(s) are set for this project
-Note: do not copy paste your secrets into your documentation
-Behavior of GitHub workflow
-
-what does it do and when
-what variables in workflow are custom to your project
-think may need to be changed if someone else is going to use it or you reuse it
-
-**Part 3**
-
-Diagram
