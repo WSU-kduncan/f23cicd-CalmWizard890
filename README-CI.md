@@ -28,7 +28,8 @@ _How to build an image from the Dockerfile_
 9. CMD [“/Project4/website/index.html”, “-D”]
 
 _How to run the container_
-
+1. Run the command "docker run -dp 71.64.191.192:80:80 index.html" to run the container.
+2. Run the command "docker ps" to see all listed container that are running and you should see the container you named.
 
 _How to view the project running in the container_
 1. Open up browser of choice (mine is chrome still)
