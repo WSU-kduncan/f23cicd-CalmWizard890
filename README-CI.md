@@ -42,7 +42,7 @@ _How to run the container_
 
 _How to view the project running in the container_
 1. Open up browser of choice (mine is Google Chrome still)
-2. Go to the address part and type in "https://localhost:80"
-3. Opens into apache2 webserver that house your website (mine is named index.html)
+2. Go to the address bar and type in "https://localhost:80"
+3. Opens into the apache2 webserver that houses your created website (mine is named my-website)
 
 **Part 2**
