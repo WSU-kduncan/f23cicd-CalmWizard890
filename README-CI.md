@@ -17,15 +17,15 @@ _How to install Docker on WSL2_
 8. sudo systemctl status docker
 
 _How to build an image from the Dockerfile_
-1. FROM ubuntu:22.04
+1. FROM apache2:latest
 2. MAINTAINER MaximusWilliams
-3. RUN apt update
-4. RUN apt install -y apache2
-5. RUN apt install -y apache2-utils
-6. RUN apt clean
-7. COPY index.html /var/www/html
+3. RUN apt update && /
+4. RUN apt install -y python3 && /
+5. RUN apt update python3 && /
+6. RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+7. COPY . /Project4/website
 8. EXPOSE 80
-9. CMD [“/usr/sbin/httpd”, “-D”, “FOREGROUND”]
+9. CMD [“/Project4/website/index.html”, “-D”]
 
 _How to run the container_
 
