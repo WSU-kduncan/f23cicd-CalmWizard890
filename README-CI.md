@@ -35,7 +35,7 @@ _How to build an image from the Dockerfile_
 #Copies new files or directories from our specified source, and adds them to the new filesystem.
 6.COPY ./Project4/website /usr/local/apache2/htdocs/
 
-#Tells what open to open up.
+#Tells what port to open up.
 7.EXPOSE 80
 
 #Tells what commands to be able to use this dockerfile set of instructions easier
@@ -47,8 +47,8 @@ _How to run the container_
 2. Run the command "docker ps" to see all listed container that are running and you should see the container you named.
 
 _How to view the project running in the container_
-1. Open up browser of choice (mine is Google Chrome still)
-2. Go to the address bar and type in "https://localhost:80"
-3. Opens into the apache2 webserver that houses your created website (mine is named my-website)
+1. Open up browser of choice (mine is Google Chrome).
+2. Go to the address bar and type in "https://localhost:80" to go to the correct location.
+3. Opens into the apache2 webserver containing your website.
 
 **Part 2**
