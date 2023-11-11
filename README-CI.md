@@ -18,20 +18,26 @@ _How to install Docker on WSL2_
 8. sudo systemctl status docker
 
 _How to build an image from the Dockerfile_
+
 #Tells the builder to use apache2 as the base image.
 1. FROM httpd:2.4
+
 #Tells who owns and maintains the file.
 2. MAINTAINER MaximusWilliams
+
 #Updates all packages and installs python/pip 3 for good measure
 3. RUN apt update && /
 4. RUN apt install -y python3 && /
 5. RUN apt update python3 && /
 6. RUN apt install -y python-pip3 && /
 7. RUN apt update python-pip3 && /
+
 #Copies new files or directories from our specified source, and adds them to the new filesystem.
 6.COPY ./Project4/website /usr/local/apache2/htdocs/
+
 #Tells what open to open up.
 7.EXPOSE 80
+
 #Tells what commands to be able to use this dockerfile set of instructions easier
 8. CMD [“/Project4/website”, “-D”]
 
