@@ -48,3 +48,53 @@ _How to view the project running in the container_
 
 
 **Part 2**
+
+_How to create a public repository in Dockerhub_
+1. Go to [DockerHub offical site](https://hub.docker.com/)
+2. Click Sign In.
+3. Enter yuor DockerHub Username and Password.
+4. On your homepage click the Create repository button.
+5. Create a name for your repository, a description of it, and click Public viewability.
+6. Click Create and it should appear in your list of repositories.
+
+_How to authenciate with Dockerhub usign command-line interface_
+- Credentials needed are your DockerHub username and password that you put into your GitHub secrets.
+- docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+_How to push images to Dockerhub w/o GitHub Actions_
+- docker push ${{secrets.DOCKER_USERNAME}}/my-project-repository:tagname
+
+_DockerHub Repo Link_
+- [My Public DockerHub Repository](https://hub.docker.com/repository/docker/calmwizard890/my-project-repository/general)
+
+_GitHub Secrets Configuration_
+- **How to set up a secret**
+1. Go to your GutHub Repository
+2. On to top of the page click the Settings button
+3. Under the security section click Secrets and variables and then the actions tab
+4. Make sure the tab is on secrets and not variables
+5. Click on New Repository secret
+6. Name your secret and set its whatever the secret is.
+7. Click Add Secret
+8. Repeat steps 5-7 for all other secrets you need to add.
+
+- **What secrets are within this project**
+1. My DockerHub Username
+2. My Dockerhub Password
+
+_Beahvior of GitHub workflow_
+- What does it do
+1. A GitHub workflow is a customizable automated process that will run one or more jobs.
+- When does a Github Workflow activate
+1. The workflow will run when:
+   - Triggered by an event in the repository that you write into the workflow ie.(A Git branch or tag is created in the workflows repository).
+   - Triggered manually.
+       1. Under repository name click Actions.
+       2. In the sidebar to the left click the name of the workflow.
+       3. Above the list of runs done by the workflow click run button to manually run the workflow.
+   - Triggered on a defined schedule within the workflow ie.(5:30 UTC every Monday-Thursday).
+- What variables are custom to my project
+  - Docker Username
+  - Docker Password
+  - DockerHub public respository name
+  - File name for the docker build command being Project4/Dockerfile
