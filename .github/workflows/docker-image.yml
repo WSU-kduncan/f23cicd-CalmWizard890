@@ -1,0 +1,32 @@
+name: Docker Image CI
+
+on:
+  push:
+  #Tells what branch to push on.
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name : docker login
+      env:
+      #Docker Username within the Github Secrets
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+      #Docker Password within Github Secrets
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        #Runs command to login into your docker account.
+      run: |
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    #Command to build the image for Docker
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag calmwizard890/my-project-repository:$(date +%s)
+#Command found on your Dockerhub repo to push the image to your on to it. 
+    - name: Docker Push
+      run: docker push ${{secrets.DOCKER_USERNAME}}/my-project-repository:tagname
