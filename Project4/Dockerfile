@@ -9,6 +9,6 @@ COPY ./Project4/website/index.html /usr/local/apache2/htdocs/
 #Tells what port to open up.
 EXPOSE 80
 #Tells what commands to be able to use this dockerfile set of instructions easier.
-CMD [“apachectl”, “-D”, "FOREFROUND"]
+CMD [“httpd”, “-D”, "FOREGROUND"]
 
 #docker run -dit -p 80:80 -v /home/accellinux/website:/usr/local/apache2/htdocs/ httpd:2.4
