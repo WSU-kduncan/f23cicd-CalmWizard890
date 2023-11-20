@@ -31,11 +31,10 @@ _How to build an image from the Dockerfile_
 4. COPY ./Project4/website/index.html /usr/local/apache2/htdocs/
 5. EXPOSE 80
 6. CMD [“apachectl”, “-D”, "FOREGROUND]
-7. exit out of dockerfile and run the command "docker build -t my-website"
 
 _How to run the container_
-1. Run the command "docker build -t my-website" to create your image from the Dockerfile.
-2. Run the command "docker run -dp 71.64.191.192:80:80 my-website" to deploy the container in detached mode (d) and to map port 80 to a free port on your home system (p) followed by your own home ip address which tells it do put your site on port 80 at your homes ip address.
+1. Run the command "docker build -t my-website ." to create your image from the Dockerfile.
+2. Run the command "docker run -dp 71.64.191.192:80:80 my-website" to deploy the container in detached mode (d) and to map port tcp 80 to a free port on your home system (p) followed by your own home ip address and the port number to tell where to put the website on your homes ip address.
 3. Run the command "docker ps" to see all listed container that are running, you should see the container you named.
 
 _How to view the project running in the container_
