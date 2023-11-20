@@ -27,19 +27,16 @@ _How to install Docker on WSL2_
 _How to build an image from the Dockerfile_
 1. FROM httpd:2.4
 2. MAINTAINER MaximusWilliams
-3. RUN apt update && /
-4. RUN apt install -y python3 && /
-5. RUN apt update python3 && /
-6. RUN apt install -y python-pip3 && /
-7. RUN apt update python-pip3 && /
-8. COPY ./Project4/website /usr/local/apache2/htdocs/
-9. EXPOSE 80
-10. CMD [“/Project4/website”, “-D”]
+3. RUN apt update
+4. COPY ./Project4/website/index.html /usr/local/apache2/htdocs/
+5. EXPOSE 80
+6. CMD [“apachectl”, “-D”, "FOREGROUND]
+7. exit out of dockerfile and run the command "docker build -t my-website"
 
 _How to run the container_
 1. Run the command "docker build -t my-website" to create your image from the Dockerfile.
-2. Run the command "docker run -dp 71.64.191.192:80:80 my-website" to run the container.
-2. Run the command "docker ps" to see all listed container that are running, you should see the container you named.
+2. Run the command "docker run -dp 71.64.191.192:80:80 my-website" to deploy the container in detached mode (d) and to map port 80 to a free port on your home system (p) followed by your own home ip address which tells it do put your site on port 80 at your homes ip address.
+3. Run the command "docker ps" to see all listed container that are running, you should see the container you named.
 
 _How to view the project running in the container_
 1. Open up browser of choice (mine is Google Chrome).
