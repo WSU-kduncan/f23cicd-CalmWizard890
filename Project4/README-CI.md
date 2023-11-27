@@ -12,6 +12,8 @@ The tools I used in this project are:
 3. Dockerhub website
 4. GitHub Action workflow
 
+![CI Process (2)](https://github.com/WSU-kduncan/f23cicd-CalmWizard890/assets/112407371/ff8b5ced-f930-427f-9f91-23efafb59d0e)
+
 **How to Run Project Locally**
 
 _How to install Docker on WSL2_
