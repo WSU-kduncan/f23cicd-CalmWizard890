@@ -30,7 +30,7 @@ _How to build an image from the Dockerfile_
 1. FROM httpd:2.4
 2. MAINTAINER MaximusWilliams
 3. RUN apt update
-4. COPY ./Project4/website/index.html /usr/local/apache2/htdocs/
+4. COPY ./website/index.html /usr/local/apache2/htdocs/
 5. EXPOSE 80
 6. CMD [“apachectl”, “-D”, "FOREGROUND]
 
