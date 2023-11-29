@@ -82,7 +82,7 @@ _GitHub Secrets Configuration_
 
 _Beahvior of GitHub workflow_
 - What does it do
-1. A GitHub workflow is a customizable automated process that will run one or more jobs.
+1. In the case of this project it will build and push my Dockerfile image to my public DockerHub repo using by my GitHub secrets, added into it to access my DockerHub account.
 - When does a Github Workflow activate
 1. The workflow will run when:
    - Triggered by an event in the repository that you write into the workflow ie.(A Git branch or tag is created in the workflows repository).
