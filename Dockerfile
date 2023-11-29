@@ -5,7 +5,7 @@ MAINTAINER MaximusWilliams
 #Updates all packages
 RUN apt update
 #Copies new files or directories from our specified source, and adds them to the new filesystem.
-COPY .website/index.html /usr/local/apache2/htdocs/
+COPY ./website/index.html /usr/local/apache2/htdocs/
 #Tells what port to open up.
 EXPOSE 80
 
