@@ -82,7 +82,7 @@ _GitHub Secrets Configuration_
 
 _Beahvior of GitHub workflow_
 - What does it do
-1. In the case of this project it will build and push my Dockerfile image to my public DockerHub repo using by my GitHub secrets, added into it to access my DockerHub account.
+1. In the case of this project it will build and push a Docker image to my public DockerHub repo using by my GitHub secrets, added into it to access my DockerHub account each time either the workflow file is edited in anyway or when the Dockerfile is edited in anyway to make a commit changes necessary.
 - When does a Github Workflow activate
 1. The workflow will run when:
    - Triggered by an event in the repository that you write into the workflow ie.(A Git branch or tag is created in the workflows repository).
