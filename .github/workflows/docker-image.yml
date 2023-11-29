@@ -26,7 +26,7 @@ jobs:
         docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
     #Command to build the image for Docker
     - name: Build the Docker image
-      run: docker build . --file Project4/Dockerfile --tag calmwizard890/my-project-repository:$(date +%s)
+      run: docker build . --file Dockerfile --tag calmwizard890/my-project-repository:$(date +%s)
 #Command found on your Dockerhub repo to push the image to your on to it. 
     - name: Docker Push
       run: docker push calmwizard890/my-project-repository:$(date +%s)
