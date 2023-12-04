@@ -2,10 +2,8 @@ name: Docker Image CI
 
 on:
   push:
-  #Tells what branch to push on.
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+    - '*'
 
 jobs:
 
