@@ -1,30 +1,45 @@
 name: Docker Image CI
-
+#Command to run the workflow whenever a tag is pushed
 on:
   push:
     tags:
     - '*'
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      
     - uses: actions/checkout@v3
-    - name : docker login
+    
+    - name: Docker Login
       env:
       #Docker Username within the Github Secrets
-        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       #Docker Password within Github Secrets
-        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         #Runs command to login into your docker account.
       run: |
-        docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-    #Command to build the image for Docker
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+     #Command to build the image for Docker
     - name: Build the Docker image
+      id: docker_build
       run: docker build . --file Dockerfile --tag calmwizard890/my-project-repository:$(date +%s)
-#Command found on your Dockerhub repo to push the image to your on to it. 
+    #Command found on your Dockerhub repo to push the image to your on to it. 
     - name: Docker Push
-      run: docker push ${{secrets.DOCKER_USERNAME}}/my-project-repository:$(date +%s)
+      run: docker push calmwizard890/my-project-repository:$(date +%s)
+    #Command to extract metadata from the repository
+    - name: Extract Docker Metadata
+      id: metadata
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          calmwizard890/my-project-repository:$(date +%s)
+    #Command to display said data
+    - name: Display Docker Metadata
+      run: |
+        echo "Tags: ${{ steps.metadata.outputs.tags }}"
+
+        
