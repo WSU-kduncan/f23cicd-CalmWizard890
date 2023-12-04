@@ -3,43 +3,51 @@ name: Docker Image CI
 on:
   push:
     tags:
-    - '*'
+      - '*'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-      
-    - uses: actions/checkout@v3
-    
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
     - name: Docker Login
       env:
-      #Docker Username within the Github Secrets
+       #Docker Username within the Github Secrets
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      #Docker Password within Github Secrets
+         #Docker Password within Github Secrets
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        #Runs command to login into your docker account.
+         #Runs command to login into your docker account.
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-     #Command to build the image for Docker
-    - name: Build the Docker image
+
+    - name: Extract Git Tag
+      id: extract_tag
+      run: echo "TAG_VERSION=$(echo $GITHUB_REF | cut -d'/' -f 3)" >> $GITHUB_ENV
+ #Command to build and push the image for Docker
+    - name: Build and Push Docker Image
       id: docker_build
-      run: docker build . --file Dockerfile --tag calmwizard890/my-project-repository:$(date +%s)
-    #Command found on your Dockerhub repo to push the image to your on to it. 
-    - name: Docker Push
-      run: docker push calmwizard890/my-project-repository:$(date +%s)
-    #Command to extract metadata from the repository
+      uses: docker/build-push-action@v2
+      with:
+      #Command to tag the pushed image based on the git tag version and latest 
+        context: .
+        push: true
+        tags: |
+          calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
+          calmwizard890/my-project-repository:latest
+ #Command to extract metadata from the repository
     - name: Extract Docker Metadata
       id: metadata
       uses: docker/metadata-action@v3
       with:
         images: |
-          calmwizard890/my-project-repository:$(date +%s)
-    #Command to display said data
+          calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
+ #Command to display said data
     - name: Display Docker Metadata
       run: |
         echo "Tags: ${{ steps.metadata.outputs.tags }}"
-
-        
