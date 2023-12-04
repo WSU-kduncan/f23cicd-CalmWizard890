@@ -2,9 +2,9 @@
 
 **CI Project Overview**
 
-For this project, I am showing my knowledge on continuous deployment, by in part 1 continuing to use the resources I created in Project 4 to create run my GitHub workflow when a tag is pushed, and to create tags from my repository from the docker/metadata action and finally push images to DockerHub based on the version of git tag, and then using markdown documentation to be able to create my project for yourself. In part 2 I use the EC2 resource to pull and run my DockerHub image, create a script to pull a new image from DockerHub and to reboot the container right after, set a listener to the adnanh's webhook (which is a tool which you can use to execute configured commands from created HTTP endpoints), and finally setting up GitHub to send a message to the listener thus activating the restart script via the hook in the deployment folder that will resart the image container when the message is recieved. In the final part I create a diagram going over the whole process of continuous deployment and the tools I used to connect the different parts of the process.
+For this project, I am showing my knowledge on continuous deployment, by in part 1 continuing to use the resources I created in Project 4 to create run my GitHub workflow when a tag is pushed, and to create tags from my repository from the docker/metadata action and finally push images to DockerHub based on the version of git tag, and then using markdown documentation to be able to create my project for yourself. In part 2 I use the EC2 resource to pull and run my DockerHub image, create a script to pull a new image from DockerHub and to reboot the container right after, set a listener to the adnanh's webhook (which is a tool which you can use to execute configured commands from created HTTP endpoints), and finally setting up GitHub to send a message to the listener thus activating the restart script via the hook in the deployment folder that will restart the image container when the message is received. In the final part I create a diagram going over the whole process of continuous deployment and the tools I used to connect the different parts of the process.
 
-As for why I am doing this project, it is to show my understanding on the subject of continuous deployment and the tools related to it. And to complete my basic understanding of the contineous delivery process by combining both contineous integration and contineous deployment pipelines.
+As for why I am doing this project, it is to show my understanding on the subject of continuous deployment and the tools related to it. And to complete my basic understanding of the continuous delivery process by combining both continuous integration and continuous deployment pipelines.
 
 The tools I used in this project are:
 1. EC2 Instance via AWS Cloud Services
@@ -15,16 +15,17 @@ The tools I used in this project are:
 
 _How to Generate a tag in git/GitHub_
 1. Login into your GitHub account and go to your repository.
-2. Go to the Releases tab in the repository menu and click it choosing create new release.
-3. Fill in revelant information for the release (version tag, a release title and, description of the release).
+2. Go to the Releases tab in the repository menu and click it choosing to create new release.
+3. Fill in relevant information for the release (version tag, a release title and, description of the release).
 4. Publish the release.
 5. You can see the tag created along with the release by looking at the release menu and it is under the tag section. 
 
-_Beahvior of GitHub workflow_
+_Behavior of GitHub workflow_
 - What does it do
-1. In the case of this project it will still build and push a Docker image to my public DockerHub repo like is project 4, but is amedned to now run only when a tag is made and pushed but it now also generates a set of tags from my repo using the docker/metadata-action, and the last but is used to extract and display docker metadata.
+1. In the case of this project it will still build and push a Docker image to my public DockerHub repo like is project 4, but is amended to now run only when a tag is made and pushed but it now also generates a set of tags from my repo using the docker/metadata-action, and the last but is used to extract and display docker metadata.
 - When does a Github Workflow activate
 1. The workflow will run when: a tag is pushed
 
 _DockerHub Repo Link_
 - [My Public DockerHub Repository](https://hub.docker.com/repository/docker/calmwizard890/my-project-repository/general)
+
