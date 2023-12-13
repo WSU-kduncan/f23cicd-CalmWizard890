@@ -62,9 +62,3 @@ jobs:
     - name: Display Docker Metadata
       run: |
         echo "Tags: ${{ steps.metadata.outputs.tags }}"
-        
-    - name: Push Docker Image to Docker Hub
-      run: |
-        docker push calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
-        docker push calmwizard890/my-project-repository:latest
-        calmwizard890/my-project-repository:v4.0.0
