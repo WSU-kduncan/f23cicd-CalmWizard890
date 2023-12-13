@@ -43,13 +43,13 @@ jobs:
     # Command to build and push the image for Docker
     - name: Build and Push Docker Image
       id: docker_build
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v3
       with:
         # Command to tag the pushed image based on the git tag version and latest
         context: .
         push: true
         tags: |
-          calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
+          calmwizard890/my-project-repository:$(date +%s)
           calmwizard890/my-project-repository:latest
 
     # Command to extract metadata from the repository
@@ -58,7 +58,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
+          calmwizard890/my-project-repository:$(date +%s)
 
     # Command to display said data
     - name: Display Docker Metadata
