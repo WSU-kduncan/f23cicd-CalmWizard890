@@ -33,8 +33,8 @@ jobs:
 
     - name: Create Tag
       run: |
-        git tag v1.0.0
-        git push origin v1.0.0
+        git tag (date +%s)
+        git push origin (date +%s)
 
     - name: Extract Git Tag
       id: extract_tag
