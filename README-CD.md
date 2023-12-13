@@ -14,11 +14,10 @@ The tools I used in this project are:
 5. GitHub Action Workflow
 
 _How to Generate a tag in git/GitHub_
-1. Login into your GitHub account and go to your repository.
-2. Go to the Releases tab in the repository menu and click it choosing to create new release.
-3. Fill in relevant information for the release (version tag, a release title and, description of the release).
-4. Publish the release.
-5. You can see the tag created along with the release by looking at the release menu and it is under the tag section. 
+1. Naviagte to the desired commit with the command **git log** to find its commit hash.
+2. Create a lightweight tag using the command **git tag <tag_name> <commit_hash>**
+3. For the correct outcome you will want to replace <tag_name> with the name you want your tag to have and <commit_hash> with the hash of the commit.
+4. Push the tag with the command **git push orgin <tag_name>** with <tag_name> being the name of the tag you wish to push.
 
 _Behavior of GitHub workflow_
 - What does it do
