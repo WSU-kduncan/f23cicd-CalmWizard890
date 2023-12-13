@@ -33,8 +33,8 @@ jobs:
         
     - name: Create Tag
       run: |
-          git tag -a v4.0.0 -m "Version 4.0.0"
-          git push origin v4.0.0
+          git tag v3.0.0
+          git push origin v3.0.0
           
     - name: Extract Git Tag
       id: extract_tag
@@ -50,7 +50,7 @@ jobs:
         tags: |
           calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
           calmwizard890/my-project-repository:latest
-          calmwizard890/my-project-repository:v4.0.0
+          calmwizard890/my-project-repository:v3.0.0
  #Command to extract metadata from the repository
     - name: Extract Docker Metadata
       id: metadata
@@ -62,3 +62,9 @@ jobs:
     - name: Display Docker Metadata
       run: |
         echo "Tags: ${{ steps.metadata.outputs.tags }}"
+        
+    - name: Push Docker Image to Docker Hub
+      run: |
+        docker push calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
+        docker push calmwizard890/my-project-repository:latest
+        calmwizard890/my-project-repository:v3.0.0
