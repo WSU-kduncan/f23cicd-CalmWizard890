@@ -34,7 +34,7 @@ jobs:
     - name: Create Tag
       run: |
         git tag v2.0.0
-        git push origin 2.0.0
+        git push origin v2.0.0
 
     - name: Extract Git Tag
       id: extract_tag
