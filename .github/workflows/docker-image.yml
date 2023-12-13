@@ -25,6 +25,7 @@ jobs:
          #Runs command to login into your docker account.
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      #Creates a tag and pushes it to the origin.
     - name: Create Tag
       run: |
           git tag v1.0.0
