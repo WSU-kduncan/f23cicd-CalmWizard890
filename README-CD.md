@@ -30,6 +30,31 @@ _Behavior of GitHub workflow_
 _DockerHub Repo Link_
 - [My Public DockerHub Repository](https://hub.docker.com/repository/docker/calmwizard890/my-project-repository/general)
 
-g
-hope it works
-this time 
+**Part 2**
+
+_How to install Docker to your instance_
+
+_Container restart script_
+
+Justification & description of what it does
+Where it should be on the instance (if someone were to use your setup)
+
+_Setting up a webhook on the instance_
+
+How to install adnanh's webhook to the instance
+How to start the webhook
+since our instance's reboot, we need to handle this
+
+_webhook task definition file_
+
+Description of what it does
+Where it should be on the instance (if someone were to use your setup)
+
+_How to configure GitHub OR DockerHub to message the listener_
+
+Provide proof that the CI & CD workflow work. This means:
+
+starting with a commit that is a change, taging the commit, pushing the tag
+Showing your GitHub workflow returning a message of success.
+Showing DockerHub has freshly pushed images.
+Showing the instance that you are deploying to has the container updated.
