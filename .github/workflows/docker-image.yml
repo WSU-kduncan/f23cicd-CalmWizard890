@@ -25,7 +25,10 @@ jobs:
          #Runs command to login into your docker account.
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-
+    - name: Create Tag
+      run: |
+          git tag v1.0.0
+          git push origin v1.0.0
     - name: Extract Git Tag
       id: extract_tag
       run: echo "TAG_VERSION=$(echo $GITHUB_REF | cut -d'/' -f 3)" >> $GITHUB_ENV
