@@ -28,8 +28,8 @@ jobs:
         
     - name: Create Tag
       run: |
-          git tag v2.0.0
-          git push origin v2.0.0
+          git tag v3.0.0
+          git push origin v3.0.0
           
     - name: Extract Git Tag
       id: extract_tag
@@ -56,3 +56,7 @@ jobs:
     - name: Display Docker Metadata
       run: |
         echo "Tags: ${{ steps.metadata.outputs.tags }}"
+    - name: Push Docker Image to Docker Hub
+      run: |
+        docker push calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
+        docker push calmwizard890/my-project-repository:latest
