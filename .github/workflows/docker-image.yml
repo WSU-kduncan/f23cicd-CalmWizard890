@@ -14,12 +14,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: docker login
+    - name: Docker Login
       env:
-        DOCKER_USER: ${{secrets.DOCKER_USER}}
-        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+       #Docker Username within the Github Secrets
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+         #Docker Password within Github Secrets
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+         #Runs command to login into your docker account.
       run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag calmwizard890/my-project-repository:$(date +%s)
       
