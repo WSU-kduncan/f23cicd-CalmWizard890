@@ -1,9 +1,14 @@
 name: Docker Image CI
 # Command to run the workflow whenever a tag is pushed
 on:
+  #push:
+    #tags:
+      #- '*'
   push:
-    tags:
-      - '*'
+  #Tells what branch to push on.
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
