@@ -13,6 +13,8 @@ The tools I used in this project are:
 4. Lucid Charts
 5. GitHub Action Workflow
 
+![CD Process](https://github.com/WSU-kduncan/f23cicd-CalmWizard890/assets/112407371/6d895a6b-8b77-45c0-b42d-0f7636bc9544)
+
 _How to Generate a tag in git/GitHub_
 1. Naviagte to the desired commit with the command **git log** to find its commit hash.
 2. Create a lightweight tag using the command **git tag <tag_name> <commit_hash>**
