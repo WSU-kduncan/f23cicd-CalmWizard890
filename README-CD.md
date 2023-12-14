@@ -33,26 +33,72 @@ _DockerHub Repo Link_
 **Part 2**
 
 _How to install Docker to your instance_
+1. Connect to the EC2 instance using a given shortcut
+  - ssh starter
+2. Optional: Update package information on the ec2 instance if not accessed for a while
+  - sudo apt-get update -y
+3. Install, Start and Verify Docker
+  - sudo apt-get install docker.io -y
+  - sudo systemctl start docker
+  - sudo docker run hello-world
+4. Enable Docker
+  - sudo systemctl enable docker
+5. Check Docker version
+  - docker --version
 
 _Container restart script_
 
-Justification & description of what it does
-Where it should be on the instance (if someone were to use your setup)
+**Justification & description of what it does**
+1. Justification
+  - There can be a variety of reason to create a restart script, these reasons often hinge on what the script is being used for. For the use in this project the justificaion for the restart script is for Configuration changes, as it grabs a new image each time it restarts so as to have the most up to date version of the docker image.  
+2. Description of script
+  - The container restart script logs into my Dokcerhub account to pull the latest image from it and then processes to remove the container and stop it, restarting it until the docker process is started up again.
+3. Where it should be on the instance (if someone were to use your setup)
+  - The location of the resart script is within my ec2 instance is in my home directory or the path /home/williams-ec2/container_restart_script.sh.
 
 _Setting up a webhook on the instance_
 
-How to install adnanh's webhook to the instance
-How to start the webhook
-since our instance's reboot, we need to handle this
+1. How to install adnanh's webhook to the instance 
+   - sudo apt-get install webhook
+2. How to start the webhook since our instance's reboot, we need to handle this
+   1. Create a service unit file: 'sudo nano /etc/systemd/system/container-webhook.service'
+   2. Add the contents of the webhook defination file to the webhook service file
+   3. Reload the service: 'sudo systemctl daemon-reload'
+   4. Start the service: 'sudo systemctl start container-webhook'
+   5. Make it noew start on reboot: 'sudo systemctl enable container-webhook'
+   6. Make sure the service is running: 'sudo systemctl status container-webhook'
+   7. Test is by rebooting the server and check again to make sure the service started up correctly.
 
 _webhook task definition file_
 
-Description of what it does
-Where it should be on the instance (if someone were to use your setup)
+1. Description of what it does
+   - The webhook on my ec2 instance is set up to if a message is recieved telling the instance to run the restart script, it will do just that running the container restart script, when prompted to.
+2. Where it should be on the instance (if someone were to use your setup)
+   -The location of this is the same as my container restart script, it being in my home directory /home/williams-ec2/container-restart-script.sh
 
 _How to configure GitHub OR DockerHub to message the listener_
-
-Provide proof that the CI & CD workflow work. This means:
+1. GitHub steps
+   1. Create a Webhook Endpoint that can receive HTTP requests, this is usually a server with a public URL.
+   2. Login into GitHub account, and use an existing repository or create a new one.
+   3. Configure a Webhook on GitHub 
+     1. Click onto your GitHub repository
+     2. Go to settings, webhooks, add webhooks
+     3. In the field called 'Payroll URL' enter in the URL of your webhook and choose the events you want to be notified of like it being pushed, a pull requests occuring or if a rebooti command is given.
+     4. Set the webhook to be active
+     5. Save the webhook to GitHub
+2. DockerHub steps
+   1. Like in the GitHub steps a Webhook end point is needed to be created that accepts HTTP requests
+   2. Login into your DockerHub account
+   3. Optional: If you are a premium member you can make an automated build for the repository.
+   4. Otherwise manually configure a webhook on DockerHub
+      1. Navigate to the chosen DockerHub repository
+      2. Go to settings, webhooks, create a webhook
+      3. Enter a name for the webhook in the Name field
+      4. Enter the webhook URL in the URL field
+      5. Choose the event you wish to be notified of (push, pull requests, reboots)
+      6. Save the webhook.
+  
+1. Provide proof that the CI & CD workflow work. This means:
 
 starting with a commit that is a change, taging the commit, pushing the tag
 Showing your GitHub workflow returning a message of success.
