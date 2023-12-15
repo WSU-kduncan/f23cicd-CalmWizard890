@@ -45,7 +45,7 @@ jobs:
         push: true
         tags: |
           calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
-          calmwizard890/my-project-repository:latest
+          calmwizard890/my-project-repository:tagname
  #Command to extract metadata from the repository
     - name: Extract Docker Metadata
       id: metadata
