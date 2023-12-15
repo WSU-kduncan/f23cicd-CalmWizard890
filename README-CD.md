@@ -100,7 +100,8 @@ _How to configure GitHub OR DockerHub to message the listener_
   
 1. Provide proof that the CI & CD workflow work. This means:
 
-starting with a commit that is a change, taging the commit, pushing the tag
-Showing your GitHub workflow returning a message of success.
-Showing DockerHub has freshly pushed images.
-Showing the instance that you are deploying to has the container updated.
+
+
+https://github.com/WSU-kduncan/f23cicd-CalmWizard890/assets/112407371/fc0b673a-8c52-47d0-8d2b-bbeeb6f2ab83
+
+
