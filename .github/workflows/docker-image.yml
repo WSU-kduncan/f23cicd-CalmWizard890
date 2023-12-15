@@ -40,12 +40,12 @@ jobs:
       uses: docker/build-push-action@v2
       with:
       #Command to tag the pushed image based on the git tag version and latest 
-        context: ./Dockerfile
+        context: .
+        file: ./Dockerfile
         push: true
         tags: |
           calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
           calmwizard890/my-project-repository:latest
-          calmwizard890/my-project-repository:v3.0.0
  #Command to extract metadata from the repository
     - name: Extract Docker Metadata
       id: metadata
