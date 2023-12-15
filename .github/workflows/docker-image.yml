@@ -1,34 +1,118 @@
-name: Publish Docker image
+name: Docker Image CI/CD
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - '*'
 
 jobs:
-  push_to_registry:
-    name: Push Docker image to Docker Hub
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v4
-      
-      - name: Log in to Docker Hub
-        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
-        with:
-          images: calmwizard890/my-project-repository:tagname
-      
-      - name: Build and push Docker image
-        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Docker Login
+      env:
+       #Docker Username within the Github Secrets
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+         #Docker Password within Github Secrets
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+         #Runs command to login into your docker account.
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        
+    - name: Create Tag
+      run: |
+          git tag v3.0.0
+          git push origin v3.0.0
+          
+    - name: Extract Git Tag
+      id: extract_tag
+      run: echo "TAG_VERSION=$(echo $GITHUB_REF | cut -d'/' -f 3)" >> $GITHUB_ENV
+ #Command to build and push the image for Docker
+    - name: Build and Push Docker Image
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+      #Command to tag the pushed image based on the git tag version and latest 
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: |
+          calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
+          calmwizard890/my-project-repository:latest
+ #Command to extract metadata from the repository
+    - name: Extract Docker Metadata
+      id: metadata
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
+ #Command to display said data
+    - name: Display Docker Metadata
+      run: |
+        echo "Tags: ${{ steps.metadata.outputs.tags }}"
+name: Docker Image CI/CD
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Docker Login
+      env:
+       #Docker Username within the Github Secrets
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+         #Docker Password within Github Secrets
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+         #Runs command to login into your docker account.
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        
+    - name: Create Tag
+      run: |
+          git tag v3.0.0
+          git push origin v3.0.0
+          
+    - name: Extract Git Tag
+      id: extract_tag
+      run: echo "TAG_VERSION=$(echo $GITHUB_REF | cut -d'/' -f 3)" >> $GITHUB_ENV
+ #Command to build and push the image for Docker
+    - name: Build and Push Docker Image
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+      #Command to tag the pushed image based on the git tag version and latest 
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: |
+          calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
+          calmwizard890/my-project-repository:latest
+ #Command to extract metadata from the repository
+    - name: Extract Docker Metadata
+      id: metadata
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          calmwizard890/my-project-repository:${{ steps.extract_tag.outputs.TAG_VERSION }}
+ #Command to display said data
+    - name: Display Docker Metadata
+      run: |
+        echo "Tags: ${{ steps.metadata.outputs.tags }}"
