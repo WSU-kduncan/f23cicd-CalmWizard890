@@ -1,8 +1,9 @@
-name: Publish Docker image
+name: CI/CD
 
 on:
   push:
-    branches: [ "dev", "main" ]
+    tags:
+      - '*'
 
 jobs:
   push_to_registry:
