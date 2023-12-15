@@ -23,7 +23,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: calmwizard890/my-project-repository
+          images: calmwizard890/my-project-repository:tagname
       
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
